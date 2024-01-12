@@ -1,3 +1,6 @@
+// 워닝 없애고 싶으면
+/* eslint-disable */
+
 import logo from './logo.svg';
 import './App.css';
 import { useState } from'react';
@@ -7,9 +10,20 @@ function App() {
   let post = "강남 우동 맛집"
   //state문법 사용하기
   let [logo, setLogo] = useState('ReactBlog')
-  let [글제목, settitle] = useState('남자 코트 추천')
-  let [글제목2, settitle2] = useState('여자 코트 추천')
-  let [글제목3, settitle3] = useState('겨울 코트 추천')
+  // let [글제목1, settitle] = useState('남자 코트 추천')
+  // let [글제목2, settitle2] = useState('여자 코트 추천')
+  // let [글제목3, settitle3] = useState('겨울 코트 추천')
+  // 이렇게 일일히 설정해도 되지만 array를 이용해서 하나의 변수로 사용가능하다
+  let [글제목, 글제목변경] = useState(['남자코트 추천', '강남 우동맛집', '파이썬 독학']);
+  let [따봉, 따봉변경] = useState(0);
+
+  //함수만들기
+  function 함수() {
+    console.log(1);
+  }
+
+  //스타일 만들기
+  let btnstyle = { marginTop: '10px' }
   
   
 return(
@@ -23,16 +37,30 @@ return(
 
       {/* 본문 */}
 
+      <button style={ btnstyle }
+      onClick={ () => {
+        let copy = [...글제목];
+        copy.sort();
+        글제목변경(copy);
+      }}>가나다순정렬</button>
+
+      <button style={ btnstyle }
+      onClick={ () => {
+        let copy = [...글제목];
+        copy[0] = '여자 코트 추천';
+        글제목변경(copy);
+        }}>글 수정</button>
+
       <div className="list">
-        <h4>{ 글제목 }</h4>
+        <h4>{ 글제목[0] } <span onClick={ () => { 따봉변경(따봉+1) } }>👍</span> { 따봉 } </h4>
         <p>2월 17일 발행</p>
       </div>
       <div className="list">
-        <h4>{ 글제목2 }</h4>
+        <h4>{ 글제목[1] }</h4>
         <p>2월 17일 발행</p>
       </div>
       <div className="list">
-        <h4>{ 글제목3 }</h4>
+        <h4>{ 글제목[2] }</h4>
         <p>2월 17일 발행</p>
       </div>
 
