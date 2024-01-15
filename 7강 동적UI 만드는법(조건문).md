@@ -20,6 +20,8 @@ let [modal, setModal] = useState(false);
 
 3. state에 따라 UI가 어떻게 보일지 작성 (조건문)
 ```html
-<h4 onClick={ ()=> { setModal(!modal) } }>{ 글제목[2] }</h4>
+
+<h4 onClick={ modal == true ? ()=>{setModal(false)} : ()=>{setModal(true)} }>{ 글제목[2] }</h4> // 내가 처음에 했던 방식
+<h4 onClick={ ()=> { setModal(!modal) } }>{ 글제목[2] }</h4> // 더 요약 할 수 있는 방법ㄴ
 ```
 
