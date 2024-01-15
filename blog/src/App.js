@@ -17,6 +17,9 @@ function App() {
   let [글제목, 글제목변경] = useState(['남자코트 추천', '강남 우동맛집', '파이썬 독학']);
   let [따봉, 따봉변경] = useState(0);
 
+  // 동적인 UI만들기
+  let [modal, setModal] = useState(false);
+
   //함수만들기
   function 함수() {
     console.log(1);
@@ -61,7 +64,8 @@ return(
         <p>2월 17일 발행</p>
       </div>
       <div className="list">
-        <h4>{ 글제목[2] }</h4>
+        {/* <h4 onClick={ modal == true ? ()=>{setModal(false)} : ()=>{setModal(true)} }>{ 글제목[2] }</h4> */}
+        <h4 onClick={ ()=> { setModal(!modal) } }>{ 글제목[2] }</h4>
         <p>2월 17일 발행</p>
       </div>
 
@@ -72,8 +76,16 @@ return(
       </div> */}
 
       {/* 모델 역할을 하는 html */}
-      {/* <Modal></Modal>, <Modal/> 중 택 1*/}
-      <Modal/>
+      {/* <Modal></Modal>*/}
+      {/* <Modal/> 중 택 1 */}
+      
+
+      {/* if (modal == true) {
+        <Modal/>  
+      } */}
+      {
+        modal == true? <Modal/> : null
+      }
 
     </div>
   );
