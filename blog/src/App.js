@@ -15,7 +15,7 @@ function App() {
   // let [글제목3, settitle3] = useState('겨울 코트 추천')
   // 이렇게 일일히 설정해도 되지만 array를 이용해서 하나의 변수로 사용가능하다
   let [글제목, 글제목변경] = useState(['남자코트 추천', '강남 우동맛집', '파이썬 독학']);
-  let [따봉, 따봉변경] = useState(0);
+  let [따봉, 따봉변경] = useState([0,0,0]);
 
   // 동적인 UI만들기
   let [modal, setModal] = useState(false);
@@ -35,27 +35,46 @@ return(
 
       {/* 헤더 */}
 
-      <div className="black-nav">
-        <h4>{logo}</h4>
+      <div className="flex bg-gray-800 px-3 py-2">
+        <h4 className='bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium'>{logo}</h4>
       </div>
 
       {/* 본문 */}
 
-      <button style={ btnstyle }
+      <button className='bg-gray-900 text-white rounded-md px-3 py-2 mr-3'
       onClick={ () => {
         let copy = [...글제목];
         copy.sort();
         글제목변경(copy);
       }}>가나다순정렬</button>
 
-      <button style={ btnstyle }
+      <button className='bg-gray-900 text-white rounded-md px-3 py-2 m-3'
       onClick={ () => {
         let copy = [...글제목];
         copy[0] = '여자 코트 추천';
         글제목변경(copy);
         }}>글 수정</button>
 
-      <div className="list">
+
+      {
+        글제목.map((item, index) => {
+          return (
+            <div className="list p-3" key={index}>
+              <div className='flex '>
+                <h4 className='text-base font-bold mb-3 mr-3' onClick={ () => { setModal(!modal) }}> { item } </h4>
+                <span onClick={ () => {
+                    let copy = [...따봉]
+                    copy[index] += 1;
+                    따봉변경(copy) 
+                  } }>👍</span> { 따봉[index] }
+              </div>
+              <p>2월 17일 발행</p>
+            </div>
+          )
+        })
+      }
+
+      {/* <div className="list">
         <h4>{ 글제목[0] } <span onClick={ () => { 따봉변경(따봉+1) } }>👍</span> { 따봉 } </h4>
         <p>2월 17일 발행</p>
       </div>
@@ -64,10 +83,10 @@ return(
         <p>2월 17일 발행</p>
       </div>
       <div className="list">
-        {/* <h4 onClick={ modal == true ? ()=>{setModal(false)} : ()=>{setModal(true)} }>{ 글제목[2] }</h4> */}
+        <h4 onClick={ modal == true ? ()=>{setModal(false)} : ()=>{setModal(true)} }>{ 글제목[2] }</h4>
         <h4 onClick={ ()=> { setModal(!modal) } }>{ 글제목[2] }</h4>
         <p>2월 17일 발행</p>
-      </div>
+      </div> */}
 
       {/* <div className="modal">
         <h4>제목</h4>
