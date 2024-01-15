@@ -4,7 +4,7 @@
 import logo from './logo.svg';
 import './App.css';
 import { useState } from'react';
-import React from 'react';
+// import React from 'react';
 
 function App() {
   // 서버에 가저온 데이터를 가정
@@ -136,7 +136,7 @@ return(
       {
         modal == true? <Modal 순번={순번} 글제목={글제목} 글제목변경={글제목변경}/> : null
       }
-      <Modal2></Modal2>
+      {/* <Modal2></Modal2> */}
 
     </div>
   );
@@ -158,28 +158,28 @@ function Modal(props) {
 }
 
 //예전 문법 import React 해줘야됨
-class Modal2 extends React.Component {
-  constructor(props){
-    super(props);
-    //오브젝트 생성
-    this.state = {
-      name : 'kim',
-      age : 20
-    }
-  }
-  render() {
-    return (
-      // 오브젝트 사용
-      <div>안녕 {this.state.age}
-      {/* //state사용 */}
-      <button onClick={
-        () => {
-          this.setState({age : 21})
-        }
-      }>버튼</button>
-      </div>
-    )
-  }
-}
+// class Modal2 extends React.Component {
+//   constructor(props){
+//     super(props);
+//     //오브젝트 생성
+//     this.state = {
+//       name : 'kim',
+//       age : 20
+//     }
+//   }
+//   render() {
+//     return (
+//       // 오브젝트 사용
+//       <div>안녕 {this.state.age}
+//       {/* //state사용 */}
+//       <button onClick={
+//         () => {
+//           this.setState({age : 21})
+//         }
+//       }>버튼</button>
+//       </div>
+//     )
+//   }
+// }
 
 export default App;
