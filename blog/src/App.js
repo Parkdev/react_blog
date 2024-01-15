@@ -4,6 +4,7 @@
 import logo from './logo.svg';
 import './App.css';
 import { useState } from'react';
+import React from 'react';
 
 function App() {
   // 서버에 가저온 데이터를 가정
@@ -75,14 +76,13 @@ return(
               <button className='mt-3 bg-gray-900 text-white rounded-md px-3 py-2 mr-3'
                 onClick={ () => {
                   let copy = [...글제목];
-                  copy.shift();
+                  copy.splice(index, 1);
                   글제목변경(copy);
                 }}>삭제</button>
             </div>
           )
         })
       }
-
         <input
         type="text"
         id="first_name"
@@ -97,8 +97,8 @@ return(
         className="ml-5 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm sm:w-auto px-5 py-2.5 text-center"
         onClick={
           () => {
-            let copy = [...글제목]
-            copy.unshift(입력값)
+            let copy = [...글제목];
+            copy.unshift(입력값);
             글제목변경(copy);
           }
         }
@@ -136,6 +136,7 @@ return(
       {
         modal == true? <Modal 순번={순번} 글제목={글제목} 글제목변경={글제목변경}/> : null
       }
+      <Modal2></Modal2>
 
     </div>
   );
@@ -154,6 +155,31 @@ function Modal(props) {
         }}>글수정</button>
       </div>
   )
+}
+
+//예전 문법 import React 해줘야됨
+class Modal2 extends React.Component {
+  constructor(props){
+    super(props);
+    //오브젝트 생성
+    this.state = {
+      name : 'kim',
+      age : 20
+    }
+  }
+  render() {
+    return (
+      // 오브젝트 사용
+      <div>안녕 {this.state.age}
+      {/* //state사용 */}
+      <button onClick={
+        () => {
+          this.setState({age : 21})
+        }
+      }>버튼</button>
+      </div>
+    )
+  }
 }
 
 export default App;
