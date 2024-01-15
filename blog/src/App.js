@@ -29,6 +29,7 @@ function App() {
 return(
     //  JSX 형식
     <div className="App">
+
       {/* 헤더 */}
 
       <div className="black-nav">
@@ -64,8 +65,28 @@ return(
         <p>2월 17일 발행</p>
       </div>
 
+      {/* <div className="modal">
+        <h4>제목</h4>
+        <p>날짜</p>
+        <p>상세내용</p>
+      </div> */}
+
+      {/* 모델 역할을 하는 html */}
+      {/* <Modal></Modal>, <Modal/> 중 택 1*/}
+      <Modal/>
+
     </div>
   );
+}
+
+function Modal() {
+  return (
+    <div className="modal">
+        <h4>제목</h4>
+        <p>날짜</p>
+        <p>상세내용</p>
+      </div>
+  )
 }
 
 export default App;
