@@ -14,7 +14,10 @@ function App() {
   // let [글제목2, settitle2] = useState('여자 코트 추천')
   // let [글제목3, settitle3] = useState('겨울 코트 추천')
   // 이렇게 일일히 설정해도 되지만 array를 이용해서 하나의 변수로 사용가능하다
-  let [글제목, 글제목변경] = useState(['남자코트 추천', '강남 우동맛집', '파이썬 독학']);
+  let [글제목, 글제목변경] = useState(['남자코트 추천', '강남 우동 맛집', '파이썬 독학']);
+  
+  let [순번,순번변경] = useState(0);
+
   let [따봉, 따봉변경] = useState([0,0,0]);
 
   // 동적인 UI만들기
@@ -61,7 +64,7 @@ return(
           return (
             <div className="list p-3" key={index}>
               <div className='flex '>
-                <h4 className='text-base font-bold mb-3 mr-3' onClick={ () => { setModal(!modal) }}> { item } </h4>
+                <h4 className='text-base font-bold mb-3 mr-3' onClick={ () => { setModal(!modal); 순번변경(index) }}> { item } </h4>
                 <span onClick={ () => {
                     let copy = [...따봉]
                     copy[index] += 1;
@@ -103,7 +106,7 @@ return(
         <Modal/>  
       } */}
       {
-        modal == true? <Modal 글제목={글제목} 글제목변경={글제목변경}/> : null
+        modal == true? <Modal 순번={순번} 글제목={글제목} 글제목변경={글제목변경}/> : null
       }
 
     </div>
@@ -113,7 +116,7 @@ return(
 function Modal(props) {
   return (
     <div className="modal">
-        <h4>{ props.글제목[0] }</h4>
+        <h4>{ props.글제목[props.순번] }</h4>
         <p>날짜</p>
         <p>상세내용</p>
         <button className='bg-gray-900 text-white rounded-md px-3 py-2 mr-3' onClick={ () => {
