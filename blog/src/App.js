@@ -49,7 +49,7 @@ return(
       }}>가나다순정렬</button>
 
       <button className='bg-gray-900 text-white rounded-md px-3 py-2 m-3'
-      onClick={ () => {
+      onClick={ function chageTitle() {
         let copy = [...글제목];
         copy[0] = '여자 코트 추천';
         글제목변경(copy);
@@ -103,19 +103,24 @@ return(
         <Modal/>  
       } */}
       {
-        modal == true? <Modal/> : null
+        modal == true? <Modal 글제목={글제목} 글제목변경={글제목변경}/> : null
       }
 
     </div>
   );
 }
 
-function Modal() {
+function Modal(props) {
   return (
     <div className="modal">
-        <h4>제목</h4>
+        <h4>{ props.글제목[0] }</h4>
         <p>날짜</p>
         <p>상세내용</p>
+        <button className='bg-gray-900 text-white rounded-md px-3 py-2 mr-3' onClick={ () => {
+          let copy = [...props.글제목];
+          copy[0] = '여자 코트 추천';
+          props.글제목변경(copy);
+        }}>글수정</button>
       </div>
   )
 }
