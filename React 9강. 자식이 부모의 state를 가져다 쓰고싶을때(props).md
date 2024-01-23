@@ -1,6 +1,8 @@
 ## Props 란
+```
 <App> - 부모 componenet
 <Modal> - 자식 component
+```
 
 status 가 전달이 가능하다 -> props
 
